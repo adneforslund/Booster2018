@@ -1,20 +1,213 @@
-<!DOCTYPE html>
+ css
+<!-- 
+################################################
+#                                              #
+#                                              #
+#       Booster Kids' adjektivhistorie!        #
+#                                              #
+#                                              #
+################################################
+-->
 
+<!--
+Dette er koden til Booster Kids' adjektivhistorie! Hele nettsiden finnes i denne filen.
+Filen inneholder både HTML, CSS og JavaScript. HTMLen er delt i to: Først en <head>-del
+med litt informasjon om siden vår, og så en <body>-del med oppsettet til siden.       
+Hvert sted det er symboler som de rundt denne blokken med tekst, etter tegnene //, eller
+mellom tegnene /* og */, er det en kommentar. Denne teksten gidder ikke nettleseren bry
+seg om, så her kan vi skrive beskjeder til oss selv eller andre som skal lese koden.
+-->
 
+<!--
+Rundt hele HTML-filen må vi ha <html> og </html>-tagger, slik at nettleseren skjønner 
+at dette er en HTML-fil.                                                               
+-->
 <html>
+    <!-- Her begynner "hodet", som inneholder forksjellig informasjon om siden. -->
+    <head>
+        <!-- Først setter vi tittelen til siden, som vises helt øverst på nettleseren når siden er aktiv. -->
+        <title> Booster Kids' fantastiske adjektivhistorie </title>
 
-<head>
-    <meta charset="utf-8">
-    <title>Min side</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script type="text/javascript" src="skript.js"></script>
+        <!-- Så setter vi utseendet på de forskjellige elementene ved hjelp av CSS -->
+        <style>
+            /* Først setter vi bakgrunnsfargen til hele HTML-siden */
+            body: {
+                background-color: #eee;
+            }
+            /* Så setter vi fargen og skrifttypen på vanlig tekst i siden. */
+            p {
+                font-family: sans-serif;
+                color: #555;
+            }
 
-</head>
+            /* Her settes utseendet og plasseringen til linjen nederst på siden. */
+            #footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                text-align: center;
+                width: 100%;
+                background-color: #333;
+            }
 
-<body>
+            /* Og utseendet til teksten på linjen nederst på siden. */
+            #footer p {
+                font-size: 12px;
+                color: #eee;
+            }
 
 
-</body>
+            /* Alle elementene som vises når man skriver inn tekst skal være midt på skjermen, litt ned fra toppen. */
+            #tekstvelger {
+                margin-top: 100px;
+                text-align: center;
+            }
 
+            /* Dette velger utseendet på knappen. */
+            #velgneste {
+                background-color: #8eb9ff;
+                color: #fff;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                border-radius: 10%;
+                transition-duration: 0.2s;
+                border: none;
+            }
+            #velgneste:hover {
+                background-color: #3e70c1;
+            }
+
+            /* Teksten som vises til slutt skal ha samme plassering som de tidligere viste elementene. */
+            #tekst {
+                margin-top: 100px;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <!-- Dette er alt vi trenger av informasjon, så nå kan vi begynne å tegne opp siden. -->
+    <body>
+        <!-- Først lager vi en div, en container eller gruppe som ikke synes av seg selv men som inneholder andre elementer. --> 
+        <!-- Dette gjør at vi kan endre på alle tingene i div-en samtidig. -->
+        <div id="tekstvelger">
+
+            <!-- Vi lager en beskjed til brukeren. -->
+            <div id="beskjed"><p>Skriv inn et adjektiv:</div>
+            <!-- Så et mellomrom. -->
+            <p>
+            <!-- Så et felt hvor brukeren kan skrive inn adjektiver og en knapp å trykke på -->
+            <input id="adjektivinput"></input>
+            <button id="velgneste">Neste</button>
+
+            <!-- Etter det definerer vi hvordan programmet skal oppføre seg. Dette gjøres i JavaScript og er den viktigste biten av --> 
+            <!-- koden på denne siden. Uten denne ville vi ikke kunnet gjøre noe som helst! -->
+            <script>
+                // Her definerer vi alle tallene og tingene vi trenger for å lage en adjektivhistorie.
+                //
+                // Først trenger vi selve historien, men uten adjektiv. Den er delt opp hvert sted et adjektiv skal legges til,
+                // og, den har med HTML-tagene for å lage linjeskift.
+                var historie = [
+                    " <p>Det var en gang en ", " mann som het Jonas. Jonas hadde en ", " bil og et ", " hus. <p>En gang kom det en ", 
+                    " dame p&aring; bes&oslash;k til Jonas, og viste han den "," hatten sin, som var laget av ", " silke. <p>Damen hadde ogs&aring; med en ", " hund."];
+                // Så trenger vi en tom liste som fylles opp med adjektiv som skrives inn underveis
+                var adjektiv = [];
+                // Så setter vi det maksimale antallet adjektiv 
+                var MAX_ADJEKTIV = 7;
+                // Og hvor mange som finnes til å begynne med. Vi setter dette til 1 siden det lages et nytt adjektiv når vi trykker på knappen første gang
+                var antall = 1;
+                // Til slutt trenger vi å vite når vi er ferdig, og dette lagres i variabelen som heter 'ferdig'
+                var ferdig = false;
+
+                // Denne koden henter knappen med IDen 'velgneste', og sier at koden inni skal kjøres nå du trykker på knappen.
+                document.getElementById("velgneste").addEventListener("click", function() {
+
+                    // Først sjekker vi om  vi er ferdige. Da skal følgende ting skje:
+                    //  - Knappen skal gjemmes.
+                    //  - Adjektivhistorien skal skrives sammen.
+                    //  - Adjektivhistorien skal vises.
+                    if (ferdig == true) {
+
+                        // Vi starter med å gjemme knappen så den ikke synes lenger.
+                        document.getElementById("tekstvelger").hidden = true;
+
+                        // Så lages adjektivhistorien. Her lager vi en tom variabel som skal inneholde all teksten til slutt.
+                        var ferdigHistorie = "";
+
+                        // Dette er hovedfunkjsonaliteten til programmet: Her legges det til nye biter av teksten og adjektivhistorien 
+                        // helt til vi har brukt alle adjektivene. Dette gjøres i en løkke som kjører like mange ganger som vi har adjektiv.
+                        for (var i = 0; i <= MAX_ADJEKTIV; i++) {
+                            // Her sjekkes om vi ikke er å på slutten av historien. Hvis vi ikke er på slutten vil vi ha med flere adjektiv.
+                            if (i < MAX_ADJEKTIV)
+                                ferdigHistorie += historie[i] + adjektiv[i]; 
+                            // Hvis vi er på slutten vil vi bare ta med den siste biten av historien.
+                            else
+                                ferdigHistorie += historie[i];
+                        }
+
+                        // Til slutt setter vi inn teksten vi har laget, og viser den frem. Vi gjør dette ved å legge til den ferdige historien
+                        // som HTMLen inni HTML-elementet med ID 'tekst', og ved å slutte å skjule dette elementet.
+                        va. tekst = document.getElementById("tekst");
+                        tekst.innerHTML = ferdigHistorie;
+                        tekst.hidden = false;
+                    }
+
+                    // Hvis vi ikke er ferdige, sjekker vi om ikke alle adjektivene vi trenger er skrevet inn enda.
+                    // Hvis de ikke er det, må vi gjøre følgende:
+                    //  - Putte det brukeren har skrevet inn i adjektiv-listen.
+                    //  - Fjerne det brukeren har skrevet så han kan skrive inn noe mer.
+                    //  - Øke adjektivtelleren med 1.
+                    if (antall < MAX_ADJEKTIV) {
+                        console.log("Ding");
+
+                        // Her oppdaterer vi beskjeden til brukeren når man har skrevet inn den første tingen
+                        if (antall == 1) {
+                            document.getElementById("beskjed").innerHTML = "<p>Skriv inn et nytt adjektiv:";
+                        }
+
+                        // Så legger vi til det nye adjektivet brukeren har skrevet inn i adjektivlisten vår. Vi gjør dette
+                        // ved å finne HTML-elementet med ID 'adjektivinput' og legge til verdien der.
+                        var adjektivInput = document.getElementById("adjektivinput");
+                        adjektiv += adjektivInput.value;
+
+                        // Deretter nullstiller vi teksten brukeren har skrevet inn og øker antallet adjektiv med 1.
+                        adjektivInput.value = "";
+                        antall++;
+
+                    // Til slutt må vi hvis vi har nok adjektiv gjøre om knappen til en Ferdig-knapp, legge til den siste tingen som
+                    // har blitt skrevet inn og gjemme feltet hvor man skriver inn ting. Dette skjer uansett når vi har like mange adjektiver
+                    // i adjektiv-telleren 'antall' som MAX_ADJEKTIV.
+                    } else {
+
+                        // Først tar vi bort beskjeden til brukeren.
+                        document.getElementById("beskjed").innerHTML = "";
+
+                        // Og legger til det siste adjektivet (på samme måte som før).
+                        var adjektivInput = document.getElementById("adjektivinput");
+                        adjektiv += adjektivInput.value;
+                        adjektivInput.hidden = true;
+
+                        // Til slutt bytter vi teksten på knappen til 'Ferdig!' og sier vi er ferdig, sånn at det øverste i koden blir kjørt på neste
+                        // knappetrykk.
+                        document.getElementById("velgneste").innerHTML = "Ferdig!";
+                        ferdig = true;
+                    }
+                });
+            </script>
+        </div>
+
+
+        <!-- Dette er en tom, skjult div (container), som vi etter hvert vil legge til adjektivhistorien i når den skal vises frem. -->
+        <div id="tekst" hidden>
+        </div>
+
+        <!-- Nederst er innholdet i den nederste linjen på siden, som viser litt info! -->
+        <div id="footer">
+            <p>Made with &#9825; by the dudes @ Kodeklubben UiB
+        </div>
+
+        <!-- Og da er siden ferdig og det gjenstår bare å skrive et par slutt-tags! -->
+    </body>
 </html>
