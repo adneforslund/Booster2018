@@ -29,6 +29,23 @@
                 text-align: center;
             }
 
+            #velgneste {
+                background-color: #8eb9ff;
+                color: #fff;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                border-radius: 10%;
+                transition-duration: 0.2s;
+                border: none;
+            }
+
+            #velgneste:hover {
+                background-color: #3e70c1;
+            }
+
             #tekst {
                 margin-top: 100px;
                 text-align: center;
@@ -43,27 +60,44 @@
         <div id="header"></div>
 
         <div id="tekstvelger">
-            <p>Skriv inn et adjektiv:
+            <div id="beskjed"><p>Skriv inn et adjektiv:</div>
             <p>
             <input id="adjektivinput"></input>
             <button id="velgneste">Neste</button>
 
             <script>
+                var historie = [
+                    " <p>Det var en gang en ", " mann som het Jonas. Jonas hadde en ", " bil og et ", " hus. <p>En gang kom det en ", 
+                    " dame p&aring; bes&oslash;k til Jonas, og viste han den "," hatten sin, som var laget av ", " silke. <p>Damen hadde ogs&aring; med en ", " hund."];                   
                 var adjektiv = [];
                 var MAX_ADJEKTIV = 7;
-                var antall = 0;
+                var antall = 1;
                 var ferdig = false;
 
                 document.getElementById("velgneste").addEventListener("click", function() {
                     if (ferdig == true) {
                         document.getElementById("tekstvelger").hidden = true;
+                        var ferdigHistorie = "";
+                        for (var i = 0; i <= MAX_ADJEKTIV; i++) {
+                            if (i < MAX_ADJEKTIV)
+                                ferdigHistorie += historie[i] + adjektiv[i]; 
+                            else
+                                ferdigHistorie += historie[i];
+                        }
+                        document.getElementById("tekst").innerHTML = ferdigHistorie;
                         document.getElementById("tekst").hidden = false;
                     }
                     if (antall < MAX_ADJEKTIV) {
+                        if (antall == 1) {
+                            document.getElementById("beskjed").innerHTML = "<p>Skriv inn et nytt adjektiv:";
+                        }
                         adjektiv += document.getElementById("adjektivinput").value;
                         document.getElementById("adjektivinput").value = "";
                         antall++;
-                    } else if (antall == MAX_ADJEKTIV) {
+                    } else {
+                        document.getElementById("beskjed").innerHTML = "";
+                        adjektiv += document.getElementById("adjektivinput").value;
+                        document.getElementById("adjektivinput").hidden = true;
                         document.getElementById("velgneste").innerHTML = "Ferdig!";
                         ferdig = true;
                     }
@@ -73,12 +107,10 @@
 
 
         <div id="tekst" hidden>
-            <p>Det var en gang en mann som het Jonas. Jonas hadde en bil og et hus.
-            <p>En gang kom det en dame p&aring; bes&oslash;k til Jonas, og viste han den hatten sin.
         </div>
 
         <div id="footer">
-            <p>Made with &#9825; by code artisans @ Kodeklubben UiB
+            <p>Made with &#9825; by the dudes @ Kodeklubben UiB
         </div>
 
     </body>
