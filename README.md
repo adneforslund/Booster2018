@@ -1,37 +1,13 @@
-## Welcome to GitHub Pages
+## Kurs i webutvikling for Booster Kids 2018/Kodeklubben UiB
 
-You can use the [editor on GitHub](https://github.com/adneforslund/Booster2018/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+### Oppsett
+Kurset inneholder 3 prosjekter i stigende vanskelighetsgrad, og har som mål å lære enkel bruk av HTML, CSS og JavaScript. I tillegg inneholder kurset et enkelt bibliotek for å gjøre mye brukt JavaScript-funksjonalitet lettere å forstå og bruke.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Adjektivhistorie 
+En enkelt fil med all kode som skal til for å lage en adjektivhistorie med brukerdefinerte adjektiv. Har en fastsatt historie og et fast antall adjektiv, og har all CSS og nesten all JavaScript inline.
 
-### Markdown
+### Handleliste
+TODO
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/adneforslund/Booster2018/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Blogg
+TODO
