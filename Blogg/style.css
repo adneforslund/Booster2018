@@ -1,0 +1,87 @@
+/* Først setter vi bakgrunnsfargen til hele HTML-siden */
+body: {
+    background-color: #eee;
+}
+/* Så setter vi fargen og skrifttypen på vanlig tekst i siden. */
+p {
+    font-family: sans-serif;
+    color: #555;
+}
+
+#tittel h1 {
+    font-family: sans-serif;
+    color: #333;
+}
+
+/* Her settes utseendet og plasseringen til linjen nederst på siden. */
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    background-color: #333;
+}
+
+/* Og utseendet til teksten på linjen nederst på siden. */
+#footer p {
+    font-size: 12px;
+    color: #eee;
+}
+
+
+#innlegg {
+    top: 70px;
+    right: 20px;
+    position: fixed;
+}
+
+/* Dette velger utseendet på knappen. */
+.kommentar-send {
+    background-color: #8eb9ff;
+    color: #fff;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10%;
+    transition-duration: 0.2s;
+    border: none;
+}
+
+
+.kommentar-send:hover {
+    background-color: #3e70c1;
+}
+
+#nytt-innlegg {
+    background-color: #8eb9ff;
+    color: #fff;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10%;
+    transition-duration: 0.2s;
+    border: none;
+}
+
+#nytt-innlegg:hover {
+    background-color: #3e70c1;
+}
+
+#innlegg-boks {
+    margin: 10px;
+    padding: 10px;
+}
+
+.tittel {
+    font-family: sans-serif;
+    font-size: 18px;
+}
+
+.kommentar {
+    padding: 5px;
+}
