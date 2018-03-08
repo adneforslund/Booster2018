@@ -7,6 +7,6 @@ document.getElementById(id).addEventListener("keyup", function (event){
 event.preventDefault();
 if (event.keyCode === 13) 
     return document
-        .getElementById("myBtn")
+        .getElementById("input")
         .click();
 })}
