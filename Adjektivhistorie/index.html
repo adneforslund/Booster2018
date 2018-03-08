@@ -169,7 +169,8 @@ at dette er en HTML-fil.
                         // Så legger vi til det nye adjektivet brukeren har skrevet inn i adjektivlisten vår. Vi gjør dette
                         // ved å finne HTML-elementet med ID 'adjektivinput' og legge til verdien der.
                         var adjektivInput = hentId("adjektivinput");
-                        adjektiv += adjektivInput.value;
+
+                        adjektiv.push(adjektivInput.value);
 
                         // Deretter nullstiller vi teksten brukeren har skrevet inn og øker antallet adjektiv med 1.
                         adjektivInput.value = "";
@@ -185,7 +186,7 @@ at dette er en HTML-fil.
 
                         // Og legger til det siste adjektivet (på samme måte som før).
                         var adjektivInput = hentId("adjektivinput");
-                        adjektiv += adjektivInput.value;
+                        adjektiv.push(adjektivInput.value);
                         adjektivInput.hidden = true;
 
                         // Til slutt bytter vi teksten på knappen til 'Ferdig!' og sier vi er ferdig, sånn at det øverste i koden blir kjørt på neste
