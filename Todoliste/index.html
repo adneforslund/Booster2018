@@ -1,3 +1,30 @@
+
+<!-- 
+################################################
+#                                              #
+#                                              #
+#       Booster Kids' adjektivhistorie!        #
+#                                              #
+#                                              #
+################################################
+-->
+
+<!--
+Dette er koden til Booster Kids' adjektivhistorie! Hele nettsiden finnes i denne filen.
+Filen inneholder både HTML, CSS og JavaScript. HTMLen er delt i to: Først en <head>-del
+med litt informasjon om siden vår, og så en <body>-del med oppsettet til siden.       
+Hvert sted det er symboler som de rundt denne blokken med tekst, etter tegnene //, eller
+mellom tegnene /* og */, er det en kommentar. Denne teksten gidder ikke nettleseren bry
+seg om, så her kan vi skrive beskjeder til oss selv eller andre som skal lese koden.
+-->
+
+<!--
+Rundt hele HTML-filen må vi ha <html> og </html>-tagger, slik at nettleseren skjønner 
+at dette er en HTML-fil.                                                               
+-->
+<!-- 
+
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +40,7 @@
 }
 
 /* Remove margins and padding from the list */
-
+/* Setter en footer til å alltid være nederst */
 
 #footer {
                 position: fixed;
@@ -29,7 +56,7 @@ ul {
     padding: 0;
 }
 
-/* Style the list items */
+/* gir stil til hver item i listen */
 ul li {
     cursor: pointer;
     position: relative;
@@ -38,28 +65,28 @@ ul li {
     font-size: 18px;
     transition: 0.2s;
 
-    /* make the list items unselectable */
+    
     
 }
 
-/* Set all odd list items to a different color (zebra-stripes) */
+/* Gir annenhver liste-ting en annen farge */
 ul li:nth-child(odd) {
     background: #f9f9f9;
 }
 
-/* Darker background-color on hover */
+/* Gir en annen farge når musepekeren er over */
 ul li:hover {
     background: #ddd;
 }
 
-/* When clicked on, add a background color and strike out text */
+/* Når du trykker på en ting i listen, skifter den farge og det blir en strek gjennom */
 ul li.checked {
     background: #888;
     color: #fff;
     text-decoration: line-through;
 }
 
-/* Add a "checked" mark when clicked on */
+
 ul li.checked::before {
     content: '';
     position: absolute;
@@ -73,7 +100,7 @@ ul li.checked::before {
     width: 7px;
 }
 
-/* Style the close button */
+/* gir en stil til lukke-knappen */
 .close {
     position: absolute;
     right: 0;
@@ -86,7 +113,7 @@ ul li.checked::before {
     color: white;
 }
 
-/* Style the header */
+/* Stil til stilen i overskriften */
 .header {
     background-color: #f44336;
     padding: 30px 40px;
@@ -94,14 +121,14 @@ ul li.checked::before {
     text-align: center;
 }
 
-/* Clear floats after the header */
+/* Forandrer header */
 .header:after {
     content: "";
     display: table;
     clear: both;
 }
 
-/* Style the input */
+/* git stil til input */
 input {
     border: none;
     width: 75%;
@@ -110,7 +137,7 @@ input {
     font-size: 16px;
 }
 
-/* Style the "Add" button */
+/* Gir stil til add-knappen */
 .addBtn {
     padding: 10px;
     width: 25%;
@@ -140,7 +167,9 @@ input {
 
 <body>
     <script src="../util/kidlib.js"></script>
-    <script>var myNodelist = document.getElementsByTagName("LI");
+   
+   <!-- oppretter listen  -->
+   <script>var myNodelist = document.getElementsByTagName("LI");
         var i;
         for (i = 0; i < myNodelist.length; i++) {
             var span = document.createElement("SPAN");
@@ -150,7 +179,7 @@ input {
             myNodelist[i].appendChild(span);
         }
 
-        // Click on a close button to hide the current list item
+        // når en trykker på et kryss, forsvinner tingen i listen 
         var close = document.getElementsByClassName("close");
         var i;
         for (i = 0; i < close.length; i++) {
@@ -160,7 +189,7 @@ input {
             }
         }
 
-        // Add a "checked" symbol when clicking on a list item
+        // Trykk på en ting i listen for å gråe den ut
         var list = [];
         function listHandler() {
             list.push(document.querySelector('ul'));
@@ -174,7 +203,7 @@ input {
         }
        
 
-        // Create a new list item when clicking on the "Add" button
+        // Lager en ny ting i listen når en trykker på add-knappen
         function newElement() {
             var li = document.createElement("li");
             var inputValue = document.getElementById("myInput").value;
