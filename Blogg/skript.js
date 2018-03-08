@@ -14,11 +14,8 @@ function oppdaterInnlegg() {
 	    nyHTML += "<h3>" + detteInnlegget.kommentarer[i].navn + "</h3>";
 	    nyHTML += "<p>" + detteInnlegget.kommentarer[i].kommentar + "</p>";
 	}
-
-	nyHTML += "</div><p>Navn: <input type=\"text\" id=\"kommentar-navn\"></input></p><p>Kommentar: <input type=\"text\" id=\"kommentar-kommentar\"></input></p><p><button id=\"kommentar-send\">Legg til kommentar</button></p></div></div>";
-	console.log(JSON.stringify(detteInnlegget));
-
     }
+    nyHTML += "</div><p>Navn: <input type=\"text\" id=\"kommentar-navn\"></input></p><p>Kommentar: <input type=\"text\" id=\"kommentar-kommentar\"></input></p><p><button id=\"kommentar-send\">Legg til kommentar</button></p></div></div>";
     innleggBoks.innerHTML = nyHTML;
     if(innlegg.length > 0) {
 	kommentarKnapper();
