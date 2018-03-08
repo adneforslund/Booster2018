@@ -1,4 +1,4 @@
-<!-- 
+<!--
 ################################################
 #                                              #
 #                                              #
@@ -11,22 +11,22 @@
 <!--
 Dette er koden til Booster Kids' adjektivhistorie! Hele nettsiden finnes i denne filen.
 Filen inneholder både HTML, CSS og JavaScript. HTMLen er delt i to: Først en <head>-del
-med litt informasjon om siden vår, og så en <body>-del med oppsettet til siden.       
+med litt informasjon om siden vår, og så en <body>-del med oppsettet til siden.
 Hvert sted det er symboler som de rundt denne blokken med tekst, etter tegnene //, eller
 mellom tegnene /* og */, er det en kommentar. Denne teksten gidder ikke nettleseren bry
 seg om, så her kan vi skrive beskjeder til oss selv eller andre som skal lese koden.
 -->
 
 <!--
-Rundt hele HTML-filen må vi ha <html> og </html>-tagger, slik at nettleseren skjønner 
-at dette er en HTML-fil.                                                               
+Rundt hele HTML-filen må vi ha <html> og </html>-tagger, slik at nettleseren skjønner
+at dette er en HTML-fil.
 -->
 <html>
     <!-- Her begynner "hodet", som inneholder forksjellig informasjon om siden. -->
     <head>
         <!-- Først setter vi tittelen til siden, som vises helt øverst på nettleseren når siden er aktiv. -->
         <title> Booster Kids' fantastiske adjektivhistorie </title>
-        
+
         <!-- Så setter vi utseendet på de forskjellige elementene ved hjelp av CSS -->
         <style>
             /* Først setter vi bakgrunnsfargen til hele HTML-siden */
@@ -89,7 +89,7 @@ at dette er en HTML-fil.
 
     <!-- Dette er alt vi trenger av informasjon, så nå kan vi begynne å tegne opp siden. -->
     <body>
-        <!-- Først lager vi en div, en container eller gruppe som ikke synes av seg selv men som inneholder andre elementer. --> 
+        <!-- Først lager vi en div, en container eller gruppe som ikke synes av seg selv men som inneholder andre elementer. -->
         <!-- Dette gjør at vi kan endre på alle tingene i div-en samtidig. -->
         <div id="tekstvelger">
 
@@ -101,7 +101,7 @@ at dette er en HTML-fil.
             <input id="adjektivinput"></input>
             <button id="velgneste">Neste</button>
 
-            <!-- Etter det definerer vi hvordan programmet skal oppføre seg. Dette gjøres i JavaScript og er den viktigste biten av --> 
+            <!-- Etter det definerer vi hvordan programmet skal oppføre seg. Dette gjøres i JavaScript og er den viktigste biten av -->
             <!-- koden på denne siden. Uten denne ville vi ikke kunnet gjøre noe som helst! -->
             <script src="../util/kidlib.js"></script>
             <script>
@@ -110,11 +110,11 @@ at dette er en HTML-fil.
                 // Først trenger vi selve historien, men uten adjektiv. Den er delt opp hvert sted et adjektiv skal legges til,
                 // og, den har med HTML-tagene for å lage linjeskift.
                 var historie = [
-                    " <p>Det var en gang en ", " mann som het Jonas. Jonas hadde en ", " bil og et ", " hus. <p>En gang kom det en ", 
+                    " <p>Det var en gang en ", " mann som het Jonas. Jonas hadde en ", " bil og et ", " hus. <p>En gang kom det en ",
                     " dame p&aring; bes&oslash;k til Jonas, og viste han den "," hatten sin, som var laget av ", " silke. <p>Damen hadde ogs&aring; med en ", " hund."];
                 // Så trenger vi en tom liste som fylles opp med adjektiv som skrives inn underveis
                 var adjektiv = [];
-                // Så setter vi det maksimale antallet adjektiv 
+                // Så setter vi det maksimale antallet adjektiv
                 var MAX_ADJEKTIV = 7;
                 // Og hvor mange som finnes til å begynne med. Vi setter dette til 1 siden det lages et nytt adjektiv når vi trykker på knappen første gang
                 var antall = 1;
@@ -135,12 +135,12 @@ at dette er en HTML-fil.
                         // Så lages adjektivhistorien. Her lager vi en tom variabel som skal inneholde all teksten til slutt.
                         var ferdigHistorie = "";
 
-                        // Dette er hovedfunkjsonaliteten til programmet: Her legges det til nye biter av teksten og adjektivhistorien 
+                        // Dette er hovedfunkjsonaliteten til programmet: Her legges det til nye biter av teksten og adjektivhistorien
                         // helt til vi har brukt alle adjektivene. Dette gjøres i en løkke som kjører like mange ganger som vi har adjektiv.
                         for (var i = 0; i <= MAX_ADJEKTIV; i++) {
                             // Her sjekkes om vi ikke er å på slutten av historien. Hvis vi ikke er på slutten vil vi ha med flere adjektiv.
                             if (i < MAX_ADJEKTIV)
-                                ferdigHistorie += historie[i] + adjektiv[i]; 
+                                ferdigHistorie += historie[i] + adjektiv[i];
                             // Hvis vi er på slutten vil vi bare ta med den siste biten av historien.
                             else
                                 ferdigHistorie += historie[i];
@@ -148,7 +148,7 @@ at dette er en HTML-fil.
 
                         // Til slutt setter vi inn teksten vi har laget, og viser den frem. Vi gjør dette ved å legge til den ferdige historien
                         // som HTMLen inni HTML-elementet med ID 'tekst', og ved å slutte å skjule dette elementet.
-                        va. tekst = hentId("tekst");
+                        var tekst = hentId("tekst");
                         tekst.innerHTML = ferdigHistorie;
                         tekst.hidden = false;
                     }
@@ -161,8 +161,9 @@ at dette er en HTML-fil.
                     if (antall < MAX_ADJEKTIV) {
 
                         // Her oppdaterer vi beskjeden til brukeren når man har skrevet inn den første tingen
-                        if (antall == 1) {
-                            hentId("beskjed").innerHTML = "<p>Skriv inn et nytt adjektiv:";
+                        if (antall >= 1) {
+                            var resterendeAdjektiv = MAX_ADJEKTIV-antall;
+                            hentId("beskjed").innerHTML = "<p>Skriv inn et nytt adjektiv:</p> <p>(Antall adjektiv du mangler &aring; skrive inn: "+ resterendeAdjektiv+")";
                         }
 
                         // Så legger vi til det nye adjektivet brukeren har skrevet inn i adjektivlisten vår. Vi gjør dette
